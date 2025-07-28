@@ -1,0 +1,267 @@
+/* src/app/login/login.component.scss */
+
+// Variables de couleur (idéalement dans src/styles.scss pour une réutilisation globale)
+:root {
+  --primary-color: #007bff;   // Un bleu Material Design (ajustez à votre choix)
+  --primary-dark: #0056b3;    // Une nuance plus foncée du primaire
+  --accent-color: #6c757d;    // Couleur d'accent secondaire
+  --text-dark: #343a40;       // Couleur de texte foncé
+  --text-medium: #6c757d;     // Couleur de texte moyenne
+  --text-light: #ced4da;      // Couleur de texte claire
+  --background-color: #f8f9fa; // Arrière-plan très clair
+  --card-background: #ffffff;  // Arrière-plan des cartes
+  --error-color: #dc3545;     // Rouge erreur
+  --success-color: #28a745;   // Vert succès
+}
+
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: transparent;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+}
+
+.registration-card {
+  background-color: var(--card-background);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 800px; /* Largeur maximale pour le formulaire multi-colonnes */
+  text-align: center;
+  box-sizing: border-box;
+
+  display: flex;       // Utilise flexbox pour organiser header, content, footer
+  flex-direction: column; // Empile les éléments verticalement
+  max-height: 90vh;    // Limite la hauteur de la carte pour permettre le défilement
+                       // sur les grands écrans aussi si le contenu est très long
+  overflow: hidden;    // Cache le débordement de la carte elle-même
+
+  @media (max-width: 768px) {
+    padding: 25px 30px;
+    max-width: 98%;
+    max-height: 95vh;
+  }
+  @media (max-width: 480px) {
+    padding: 15px 20px;
+  }
+}
+
+.registration-header {
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  .header-icon {
+    font-size: 70px;
+    width: 70px;
+    height: 70px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
+  h2 {
+    font-size: 36px;
+    margin: 0 0 10px 0;
+    color: var(--text-dark);
+    font-weight: 700;
+  }
+  p {
+    font-size: 17px;
+    color: var(--text-medium);
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.section-title {
+  text-align: left;
+  font-size: 22px;
+  color: var(--primary-color);
+  margin-top: 25px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Styles pour le conteneur défilable */
+.form-scrollable-content {
+  flex-grow: 1;      /* Permet à ce conteneur de prendre tout l'espace disponible */
+  overflow-y: auto;  /* Rend le contenu défilable verticalement si ça dépasse */
+  padding-right: 15px; /* Ajoute un peu de padding pour éviter que le scrollbar ne colle au contenu */
+  box-sizing: border-box;
+  margin-right: -15px; /* Compense le padding-right pour que le contenu s'aligne bien */
+
+  /* Styles pour masquer/personnaliser la barre de défilement (Webkit) */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+
+    &.two-columns {
+      flex-wrap: wrap;
+      mat-form-field {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 250px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 10px;
+      mat-form-field {
+        flex: 1 1 100%;
+      }
+    }
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  mat-form-field {
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+      margin-bottom: 5px;
+    }
+
+    &.mat-focused {
+      .mat-form-field-outline-thick {
+        color: var(--primary-color);
+      }
+      .mat-form-field-label {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  mat-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+    margin-top: 10px;
+    label {
+      font-size: 16px;
+      color: var(--text-dark);
+      margin-right: 15px;
+      font-weight: 500;
+    }
+    mat-radio-button {
+      margin-right: 10px;
+    }
+  }
+  mat-error {
+    text-align: left;
+  }
+
+  button[type="submit"] {
+    height: 55px;
+    font-size: 19px;
+    margin-top: 25px;
+    border-radius: 8px;
+    background-color: #2b8f2b;
+    color: white;
+    font-weight: 400;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #228B22;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    &:disabled {
+      background-color:gray;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
+.registration-footer {
+  margin-top: 20px;
+  flex-shrink: 0;
+  font-size: 15px;
+  color: var(--text-medium);
+
+  a {
+    color: rgb(123, 123, 248);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+
+    &:hover {
+      color: rgb(62, 62, 202);
+      text-decoration :none;
+    }
+  }
+
+  p {
+    margin: 8px 0;
+  }
+}
+
+.close{
+    position: absolute;
+    top: 15px;
+    left: 1cm;
+    background-color: rgb(253, 73, 73);
+    color: white;
+    padding: 0.2rem 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .4s ease-in-out;
+}
+
+.close:hover{
+    background-color: rgb(250, 59, 59);
+    color: white;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.valide{
+      color: #228B22;
+}
+
+
+/* Rappel: Placez ces styles dans src/styles.scss pour les messages de Snackbar */
+/*
+.snackbar-success {
+  background-color: var(--success-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 500;
+}
+
+.snackbar-error {
+  background-color: var(--error-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 500;
+}
+*/

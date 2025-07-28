@@ -1,0 +1,262 @@
+/* Styles généraux pour le conteneur de la page */
+.family-tree-container {
+  margin-left: -500px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  padding: 20px;
+  min-height: calc(100vh - 64px); /* S'adapte à la hauteur de l'écran moins la barre de navigation si elle existe */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Ajoute un espacement entre les sections */
+}
+
+/* Titres et paragraphes */
+h2 {
+  color: #2c3e50;
+  margin-bottom: 5px; /* Réduit la marge */
+  font-size: 2.2em;
+  font-weight: 700;
+  text-align: center;
+}
+
+p {
+  color: #5f6c7c;
+  margin-bottom: 25px;
+  font-size: 1.1em;
+  text-align: center;
+  max-width: 800px;
+}
+
+/* Section des contrôles (boutons, infos utilisateur, invitations) */
+.controls-section {
+  width: 95%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Espacement entre les éléments de la section */
+}
+
+.user-info {
+  font-size: 1.1em;
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux boutons de passer à la ligne si l'espace est insuffisant */
+  gap: 15px; /* Espacement entre les boutons */
+  justify-content: center;
+  width: 100%; /* S'assure que les boutons prennent toute la largeur disponible dans .controls-section */
+  margin-bottom: 15px;
+}
+
+/* Styles pour les boutons Material */
+button[mat-raised-button] {
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 150px; /* Assure une largeur minimale pour les boutons */
+
+  /* Couleurs de base, peuvent être surchargées par color="primary", color="accent", etc. */
+  background-color: #4CAF50; /* Vert par défaut */
+  color: white;
+
+  &:hover {
+    background-color: #43a047;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &.mat-mdc-button-base[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #b0bec5 !important; /* Couleur de fond pour les boutons désactivés */
+  }
+
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+/* Styles spécifiques aux couleurs Material */
+button[mat-raised-button][color="primary"] {
+  background-color: #1976d2; /* Bleu foncé */
+  &:hover {
+    background-color: #1565c0;
+  }
+}
+
+button[mat-raised-button][color="accent"] {
+  background-color: #ffc107; /* Ambre */
+  color: #333; /* Texte plus sombre pour le contraste */
+  &:hover {
+    background-color: #ffb300;
+  }
+}
+
+button[mat-raised-button][color="warn"] {
+  background-color: #d32f2f; /* Rouge */
+  &:hover {
+    background-color: #c62828;
+  }
+}
+
+
+/* Styles pour le menu de sélection d'arbre */
+.mat-mdc-menu-panel {
+  max-width: 300px !important; /* Assurez-vous que le menu ne soit pas trop large */
+  border-radius: 8px; /* Bords arrondis pour le menu */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+  .mat-mdc-list-item.selected-tree {
+    background-color: #e8f5e9; /* Couleur de fond pour l'arbre sélectionné */
+    font-weight: 600;
+    color: #4CAF50; /* Texte vert pour l'arbre sélectionné */
+    border-left: 4px solid #4CAF50; /* Barre latérale pour l'indication */
+  }
+  .remove-tree-button {
+    margin-left: auto; /* Pousse le bouton de suppression à droite */
+    color: #e57373; /* Couleur pour le bouton de suppression */
+    &:hover {
+      background-color: #ffebee; /* Léger fond rouge au survol */
+    }
+  }
+}
+
+
+/* Section des invitations */
+.invitations-card {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px; /* Espacement au-dessus de la carte */
+  border-radius: 12px;
+  overflow: hidden; /* Assure que les coins arrondis sont respectés par l'en-tête */
+
+  .mat-mdc-card-header {
+    background-color: #ffe0b2; /* Couleur chaude pour l'en-tête d'invitation */
+    padding: 15px 20px; /* Padding ajusté */
+    border-bottom: 1px solid #ffcc80; /* Petite bordure pour séparer */
+  }
+  .mat-mdc-card-title {
+    color: #e65100; /* Couleur vive pour le titre */
+    font-size: 1.3em;
+    font-weight: 600;
+  }
+  .mat-mdc-card-content {
+    padding: 15px 20px;
+  }
+  .mat-mdc-list-item {
+    padding-right: 16px;
+    align-items: center; /* Centre les éléments verticalement */
+  }
+  .mat-mdc-list-item .mat-mdc-icon-button {
+    margin-left: 8px;
+  }
+  .mat-mdc-list-item-title, .mat-mdc-list-item-line {
+    white-space: normal; /* Permet au texte de s'enrouler */
+    flex-grow: 1; /* Permet au texte de prendre l'espace disponible */
+  }
+}
+
+
+/* Message si non connecté */
+.not-logged-in-message {
+  padding: 20px;
+  border: 1px solid #ffccbc;
+  background-color: #ffe0b2;
+  color: #d32f2f;
+  border-radius: 8px;
+  font-size: 1.1em;
+  text-align: center;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Styles pour le conteneur du réseau Vis.js */
+.vis-network-canvas {
+  position: relative; /* Très important pour positionner les outils à l'intérieur */
+  width: 95%;
+  max-width: 1200px;
+  height: 650px;
+  border: 1px solid #dcdcdc;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden; /* Gardez ceci si vous ne voulez pas de débordement */
+}
+
+/* Styles pour le panneau de manipulation de Vis.js (s'assure qu'il est visible et bien placé) */
+.vis-manipulation {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex; /* Utilise flexbox pour aligner les boutons */
+  flex-wrap: wrap; /* Permet aux boutons de s'enrouler */
+
+  button {
+    background-color: #607d8b; /* Couleur neutre pour les boutons des outils */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.9em; /* Légèrement plus petit pour les outils */
+
+    &:hover {
+      background-color: #455a64;
+    }
+  }
+}
+
+/* Ajustements responsives */
+@media (max-width: 768px) {
+  .family-tree-container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .vis-network-canvas {
+    height: 500px; /* Ajuste la hauteur pour les petits écrans */
+    width: 98%;
+  }
+
+  .action-buttons {
+    flex-direction: column; /* Les boutons s'empilent sur les petits écrans */
+    width: 100%;
+  }
+
+  button[mat-raised-button] {
+    width: 100%; /* Les boutons prennent toute la largeur disponible */
+    margin-bottom: 10px;
+  }
+
+  .invitations-card {
+    margin-top: 15px;
+  }
+}

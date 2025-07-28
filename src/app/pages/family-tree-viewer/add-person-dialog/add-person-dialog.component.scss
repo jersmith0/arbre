@@ -1,0 +1,27 @@
+/* add-person-dialog.component.scss */
+
+// Styles pour le contenu du dialogue, si nécessaire
+mat-dialog-content {
+  padding-top: 20px; // Un peu d'espace en haut
+  padding-bottom: 10px; // Et en bas
+}
+
+// Assurez-vous que les champs de formulaire occupent la largeur disponible
+mat-form-field {
+  width: 100%; // Pour que les champs s'étendent sur toute la largeur de la modal
+  margin-bottom: 15px; // Espacement entre les champs
+}
+
+// Styles pour les boutons d'action du dialogue
+mat-dialog-actions {
+  padding-top: 10px; // Espacement au-dessus des boutons
+  padding-bottom: 10px; // Espacement en dessous des boutons
+}
+
+// Optionnel: Si vous voulez un style spécifique pour le titre
+h2[mat-dialog-title] {
+  color: #3f51b5; // Couleur primaire d'Angular Material, par exemple
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee; // Une petite ligne de séparation
+}

@@ -1,0 +1,10 @@
+ <mat-drawer-container autosize style="height: calc(100vh - 65px);"> 
+      <mat-drawer mode="side" opened class="side-bar">
+        <a routerLink="/projects" mat-menu-item routerLinkActive="active-link" ><mat-icon>dataset</mat-icon> Projets</a>
+        <a routerLink="/contributors" mat-menu-item routerLinkActive="active-link" ><mat-icon>group</mat-icon>Contributeurs</a>
+      </mat-drawer>
+      <mat-drawer-content>
+        <router-outlet/>
+      </mat-drawer-content>
+
+    </mat-drawer-container> 

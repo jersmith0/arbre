@@ -1,0 +1,470 @@
+/* Variables CSS pour un thème chaleureux et des couleurs d'accent inspirées de l'héritage */
+:root {
+    --app-background-color: #FDF9F3; /* Crème très doux, presque blanc cassé, pour une base chaleureuse */
+    --search-bar-background: #FFFFFF;    /* Blanc pur pour la barre de recherche */
+    --text-dark-color: #3E2723;          /* Marron foncé doux pour le texte principal */
+    --placeholder-text-color: #795548;   /* Marron plus clair pour le placeholder et les icônes */
+    --border-default-color: #D7CCC8;     /* Beige-gris clair pour les bordures */
+    --border-focus-color: #8D6E63;       /* Marron terre apaisant au focus */
+    --button-background-color: #EFEBE9;  /* Beige très clair pour le fond des boutons */
+    --button-text-color: #5D4037;        /* Marron moyen pour le texte des boutons */
+    --button-hover-background: #D7CCC8;  /* Beige-gris plus soutenu au survol des boutons */
+    
+    /* Polices pour l'harmonie visuelle */
+    --font-heading: 'Playfair Display', serif; /* Élégante pour les titres */
+    --font-body: 'Roboto', sans-serif; /* Claire et moderne pour le corps */
+
+    --panel-background-color: #FFFFFF; /* Fond blanc pour le panneau, avec un dégradé subtil */
+    --panel-border-color: #E0DEDC; /* Bordure subtile pour le panneau */
+    --panel-shadow: rgba(0, 0, 0, 0.08); /* Ombre plus douce pour le panneau */
+    --panel-accent-color: #A1887F; /* Marron rosé doux pour les accents */
+    --list-icon-color: #6D4C41; /* Marron plus soutenu pour les icônes de liste */
+}
+
+
+
+/* Application de la police et du fond au corps */
+body {
+    background-color: var(--app-background-color);
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--text-dark-color);
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- Layout principal avec Flexbox --- */
+.app-main-layout {
+    display: flex;
+    height: 100vh; 
+    width: 100%;
+    overflow: hidden; 
+}
+
+/* Zone de contenu principal */
+.main-content-area {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; 
+    overflow-y: auto; 
+}
+
+/* Conteneur de la barre de recherche */
+.genealogy-search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; 
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1; 
+}
+
+/* Titre de l'application */
+.app-title {
+    font-family: var(--font-heading);
+    font-size: 4.8em; 
+    color: var(--text-dark-color);
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.08); 
+    letter-spacing: -1.5px; 
+    line-height: 1.1;
+    text-align: center;
+}
+
+/* Sous-titre descriptif */
+.app-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.6em;
+    color: var(--placeholder-text-color);
+    margin-top: 0;
+    margin-bottom: 50px; 
+    text-align: center;
+}
+
+/* Styles de la barre de recherche */
+.app-search-bar {
+    width: 582px;
+    max-width: 90%;
+    height: 52px; 
+    background-color: var(--search-bar-background);
+    transition: all 0.25s ease-in-out; 
+    margin-bottom: 25px; 
+    border: 1px solid var(--border-default-color); 
+    display: flex;
+    align-items: center;
+    border-radius: 26px; 
+}
+
+/* Styles au focus de la barre de recherche */
+.app-search-bar.mat-focused {
+    // box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+    border-color: greenyellow!important; 
+}
+
+/* Cache les éléments Material par défaut qui ne correspondent pas au design */
+.app-search-bar .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    height: 100%;
+    border-radius: 26px; 
+    overflow: hidden;
+}
+
+.app-search-bar .mat-form-field-underline,
+.app-search-bar .mat-form-field-outline {
+    display: none !important;
+}
+
+.app-search-bar .mat-form-field-flex {
+    background-color: transparent !important;
+    height: 100%;
+    align-items: center;
+    padding: 0 20px; 
+}
+
+/* Styles pour l'input de texte */
+.app-search-bar input[matInput] {
+    flex-grow: 1;
+    height: 100%;
+    border: none !important;
+    outline: none !important; 
+    background: transparent;
+    color: var(--text-dark-color);
+    font-size: 17px; 
+    padding: 0 10px; 
+    box-sizing: border-box;
+}
+
+/* Styles pour le placeholder */
+.app-search-bar input::placeholder {
+    color: var(--placeholder-text-color);
+    opacity: 1;
+}
+/* Compatibilité navigateurs */
+.app-search-bar input::-webkit-input-placeholder { color: var(--placeholder-text-color); opacity: 1; }
+.app-search-bar input::-moz-placeholder { color: var(--placeholder-text-color); opacity: 1; }
+.app-search-bar input:-ms-input-placeholder { color: var(--placeholder-text-color); opacity: 1; }
+
+/* Styles des icônes */
+.app-search-bar mat-icon {
+    color: var(--placeholder-text-color);
+    font-size: 26px; 
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.app-search-bar .search-icon {
+    margin-right: 15px; 
+    color:#228B22
+}
+
+.app-search-bar .mic-icon {
+    margin-left: 10px; 
+}
+
+.app-search-bar mat-icon:hover {
+    color: var(--text-dark-color); 
+}
+
+/* Styles des boutons d'action */
+.app-buttons {
+    display: flex;
+    gap: 20px; 
+    margin-top: 35px;
+}
+
+.app-buttons button {
+    background-color: #228B22;
+    color: #fff;
+    border-radius: 6px; 
+    padding: 12px 22px; 
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: none; 
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.1s ease-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    border: 1px solid var(--border-default-color); 
+}
+
+.app-buttons button:nth-child(2){
+  background-color: transparent;
+    border: 1px solid #228B22;
+    color: #228B22;
+    border-radius: 6px; 
+    padding: 12px 22px; 
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: none; 
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+.app-buttons button:nth-child(2):hover {
+    background-color: #228B22;
+    color: #fff;
+}
+
+/* Motif d'arbre généalogique subtil en arrière-plan */
+.genealogy-pattern {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background-image: 
+    //     radial-gradient(circle at 15% 25%, rgba(161, 136, 127, 0.08) 0%, transparent 40%), /* Accent marron rosé */
+    //     radial-gradient(circle at 85% 75%, rgba(121, 85, 72, 0.08) 0%, transparent 40%), /* Accent marron plus foncé */
+    //     radial-gradient(circle at 50% 10%, rgba(188, 170, 164, 0.06) 0%, transparent 30%), /* Teinte chaude neutre */
+    //     radial-gradient(circle at 20% 80%, rgba(141, 110, 99, 0.06) 0%, transparent 30%); /* Teinte marron moyen */
+    // background-size: 60% 60%, 55% 55%, 30% 30%, 25% 25%;
+    // background-repeat: no-repeat;
+    // background-position: top left, bottom right, center top, left bottom;
+    opacity: 0.8; 
+    z-index: 0;
+    pointer-events: none;
+    animation: backgroundPulse 10s infinite alternate ease-in-out; 
+}
+
+/* Animation de pulsation pour le motif de fond */
+@keyframes backgroundPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.02); opacity: 0.9; }
+}
+
+/* --- Styles du panneau latéral droit pour les informations de l'app (TOUJOURS OUVERT) --- */
+/* --- Styles du panneau latéral droit pour les informations de l'app (TOUJOURS OUVERT) --- */
+.right-info-panel {
+    width: 380px;
+    min-width: 380px;
+    background-color: #004d00;
+    color: #fff;
+
+    opacity: 0.95;
+
+    box-shadow: -6px 0 15px var(--panel-shadow),
+                -2px 0 8px rgba(0,0,0,0.05);
+    border-left: 1px solid var(--panel-border-color);
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 0 0 0 12px;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center; 
+    padding: 20px; 
+    border-bottom: 1px solid var(--panel-border-color);
+    background-color: #63f363; 
+    position: sticky; 
+    top: 0;
+    z-index: 10; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03); /* Ombre plus subtile */
+}
+
+.panel-header h3 {
+    margin: 0;
+    font-family: var(--font-heading); 
+    font-size: 1.5em; 
+    color: var(--text-dark-color);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.03); 
+}
+
+.panel-icon {
+    font-size: 1.5rem; 
+    color: #000; /* Couleur d'icône plus riche */
+    margin-right: 15px; 
+    transform: rotate(-5deg); 
+    transition: transform 0.3s ease-in-out;
+}
+
+.panel-header:hover .panel-icon {
+    transform: rotate(5deg); 
+}
+
+/* Masque le bouton de fermeture car le panneau est toujours ouvert */
+.panel-toggle-button {
+    display: none; 
+}
+
+.panel-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    line-height: 1.7; 
+    font-size: 1em; 
+    color: var(--text-dark-color);
+}
+
+.panel-content p {
+    margin-bottom: 1em; 
+}
+
+.panel-content h4 {
+    font-family: var(--font-body);
+    font-size: 1.2em; 
+    color: var(--panel-accent-color); 
+    margin-top: 30px;
+    margin-bottom: 15px;
+    position: relative; 
+    padding-bottom: 8px;
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+}
+
+/* Ligne décorative sous les h4 */
+.panel-content h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px; 
+    height: 3px; 
+    background-color: var(--panel-accent-color);
+    border-radius: 2px;
+}
+
+.panel-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.panel-content ul li {
+    margin-bottom: 10px; 
+    position: relative;
+    padding-left: 25px; 
+    transition: color 0.2s ease-in-out;
+}
+
+.panel-content ul li::before {
+    content: 'check_circle'; 
+    font-family: 'Material Icons'; 
+    color: var(--list-icon-color); /* Nouvelle couleur pour les puces */
+    position: absolute;
+    left: 0;
+    font-size: 1.1em;
+    line-height: 1;
+}
+
+.panel-content ul li:hover {
+    color: var(--border-focus-color); 
+}
+
+.panel-content .panel-link {
+    color: var(--border-focus-color);
+    text-decoration: none;
+    font-weight: 500; 
+    transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+}
+
+.panel-content .panel-link:hover {
+    color: var(--text-dark-color);
+    text-decoration: underline;
+}
+
+.app-version, .app-credits {
+    font-size: 0.85em; 
+    color: var(--placeholder-text-color);
+    margin-top: 25px; 
+    text-align: center;
+    border-top: 1px dashed var(--panel-border-color); 
+    padding-top: 15px;
+}
+
+/* Nouveau séparateur décoratif */
+.panel-divider {
+    width: 80%;
+    height: 1px;
+    background-color: var(--panel-border-color);
+    margin: 30px auto; 
+    opacity: 0.7;
+    border-radius: 50%; 
+}
+
+
+/* --- Media Queries pour la responsivité --- */
+@media (max-width: 992px) {
+    .right-info-panel {
+        width: 320px; 
+        min-width: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-main-layout {
+        flex-direction: column;
+        position: relative;
+    }
+
+    .main-content-area {
+        height: auto;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    .right-info-panel {
+        width: 100%; 
+        min-width: 100%;
+        height: auto; 
+        position: static; 
+        box-shadow: 0 -6px 15px var(--panel-shadow); 
+        border-top: 1px solid var(--panel-border-color); 
+        border-left: none; 
+        border-radius: 12px 12px 0 0; 
+        padding-bottom: 20px; 
+    }
+    
+    .panel-header {
+        justify-content: center; 
+        padding: 15px 20px; 
+        box-shadow: none; 
+    }
+    
+    .panel-icon {
+        font-size: 24px; 
+        margin-right: 10px;
+    }
+
+    .panel-header h3 {
+        font-size: 1.2em; 
+    }
+
+    .app-title { font-size: 3.5em; }
+    .app-subtitle { font-size: 1.2em; margin-bottom: 40px; }
+    .app-search-bar { height: 48px; font-size: 16px; }
+    .app-search-bar input[matInput] { font-size: 16px; }
+    .app-search-bar mat-icon { font-size: 24px; width: 24px; height: 24px; }
+    .app-buttons { flex-direction: column; gap: 15px; }
+    .app-buttons button { width: 100%; padding: 14px 0; }
+
+    .panel-divider {
+        margin: 20px auto; 
+    }
+
+    .app-version, .app-credits {
+        margin-top: 20px;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-title { font-size: 2.8em; }
+    .app-subtitle { font-size: 1em; margin-bottom: 30px; }
+    .app-search-bar { height: 45px; border-radius: 22px !important; }
+    .app-buttons button { font-size: 13px; padding: 12px 0; }
+}

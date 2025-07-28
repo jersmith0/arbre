@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Ajouter une relation</h2>
+
+<mat-dialog-content class="mat-typography">
+  <p>Entre <strong>{{ data.fromNodeLabel }}</strong> et <strong>{{ data.toNodeLabel }}</strong></p>
+  <form (ngSubmit)="onAddRelationship()">
+    <mat-form-field appearance="fill">
+      <mat-label>Type de relation</mat-label>
+      <mat-select [(ngModel)]="relationshipType" name="relationshipType" (selectionChange)="onTypeChange()" required>
+        <mat-option *ngFor="let type of relationshipTypes" [value]="type.value">
+          {{ type.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!relationshipType">Le type est requis.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Label de la relation</mat-label>
+      <input matInput [(ngModel)]="relationshipLabel" name="relationshipLabel" required>
+      <mat-hint>Ce texte apparaîtra sur la flèche.</mat-hint>
+      <mat-error *ngIf="!relationshipLabel">Le label est requis.</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-flat-button color="primary" (click)="onAddRelationship()" [disabled]="!relationshipType || !relationshipLabel.trim()">Ajouter</button>
+</mat-dialog-actions>

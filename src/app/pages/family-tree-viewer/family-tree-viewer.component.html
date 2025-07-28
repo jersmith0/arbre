@@ -1,0 +1,77 @@
+<div class="family-tree-container">
+  <h2>Votre Arbre Généalogique</h2>
+  <p>Explorez les relations entre les membres de votre famille et collaborez !</p>
+
+  <div class="controls-section">
+    <ng-container *ngIf="currentUser">
+      <div class="user-info">
+        Connecté en tant que: <strong>{{ userProfile?.displayName || currentUser.email }}</strong>
+        (UID: {{ currentUser.uid }})
+      </div>
+
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="addNode()"
+                [disabled]="activeTreeUid !== currentUser.uid"
+                title="Ajouter un membre à votre propre arbre">
+          <mat-icon>person_add</mat-icon> Ajouter un Membre
+        </button>
+
+        <button mat-raised-button color="accent" (click)="sendInvitation()"
+                [disabled]="activeTreeUid !== currentUser.uid"
+                title="Inviter quelqu'un à rejoindre votre arbre">
+          <mat-icon>mail</mat-icon> Inviter
+        </button>
+
+        <button mat-raised-button [matMenuTriggerFor]="treeMenu" color="warn">
+          <mat-icon>account_tree</mat-icon>
+          Arbre Actuel: {{ currentTreeNameForDisplay }}
+        </button>
+        <mat-menu #treeMenu="matMenu">
+          <mat-list>
+            <mat-list-item *ngFor="let tree of accessibleTrees" (click)="selectTreeToView(tree.ownerUid)"
+                           [class.selected-tree]="tree.isSelected">
+              <mat-icon matListItemIcon>{{ tree.isSelected ? 'check_circle' : 'circle' }}</mat-icon>
+              <span matListItemTitle>{{ tree.treeName || ('Arbre de ' + tree.ownerEmail) }}</span>
+              <button *ngIf="tree.ownerUid !== currentUser.uid" mat-icon-button class="remove-tree-button"
+                      (click)="removeSharedTree($event, tree.ownerUid)" title="Retirer de ma liste">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item (click)="selectTreeToView(currentUser.uid)">
+              <mat-icon matListItemIcon>person</mat-icon>
+              <span matListItemTitle>Mon Arbre ({{ currentUser.email }})</span>
+            </mat-list-item>
+          </mat-list>
+        </mat-menu>
+      </div>
+
+      <mat-card *ngIf="pendingInvitations.length > 0" class="invitations-card">
+        <mat-card-header>
+          <mat-card-title>Invitations en attente</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let invite of pendingInvitations">
+              <mat-icon matListItemIcon>email</mat-icon>
+              <div matListItemTitle>Invitation de {{ invite.ownerEmail }}</div>
+              <div matListItemLine>Pour l'arbre : {{ invite.ownerEmail }}</div>
+              <button mat-icon-button (click)="acceptInvitation(invite)" color="primary" title="Accepter">
+                <mat-icon>check_circle</mat-icon>
+              </button>
+              <button mat-icon-button (click)="declineInvitation(invite.id!)" color="warn" title="Refuser">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+
+    <div *ngIf="!currentUser" class="not-logged-in-message">
+      Veuillez vous connecter pour visualiser ou gérer votre arbre généalogique.
+    </div>
+  </div>
+
+  <div #networkContainer class="vis-network-canvas"></div>
+</div>

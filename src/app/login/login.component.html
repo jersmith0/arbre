@@ -1,0 +1,136 @@
+  <div class="registration-card">
+    <div class="registration-header">
+      <mat-icon class="header-icon">person_add</mat-icon>
+      <h2>Créer un Nouveau Compte</h2>
+      <p>Remplissez le formulaire ci-dessous pour vous inscrire et créer votre profil.</p>
+    </div>
+
+    <div class="form-scrollable-content">
+       @if (loading()) {
+        <app-log-skeleton/>
+       }@else {
+         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+
+        <h3 class="section-title">Informations de Connexion</h3>
+        <div class="form-row two-columns">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" placeholder="monemail@exemple.com" required>
+            <mat-icon matSuffix [class.valide]="this.registrationForm.get('email')?.valid">email</mat-icon>
+            <mat-error *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+              <span *ngIf="f['email'].errors?.['required']">L'e-mail est requis.</span>
+              <span *ngIf="f['email'].errors?.['email']">Veuillez entrer une adresse e-mail valide.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput formControlName="password" type="password" placeholder="********" required minlength="6">
+            <mat-icon matSuffix [class.valide]="this.registrationForm.get('password')?.valid">lock</mat-icon>
+            <mat-error *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)">
+              <span *ngIf="f['password'].errors?.['required']">Le mot de passe est requis.</span>
+              <span *ngIf="f['password'].errors?.['minlength']">Minimum 6 caractères.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <h3 class="section-title">Détails Personnels</h3>
+        <div class="form-row two-columns">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Prénom</mat-label>
+            <input matInput formControlName="firstName" placeholder="Eric" required>
+            <mat-icon matSuffix [class.valide]="this.registrationForm.get('firstName')?.valid">badge</mat-icon>
+            <mat-error *ngIf="f['firstName'].invalid && (f['firstName'].dirty || f['firstName'].touched)">Le prénom est requis.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="lastName" placeholder="Kenfack" required>
+            <mat-icon matSuffix [class.valide]="this.registrationForm.get('lastName')?.valid">badge</mat-icon>
+            <mat-error *ngIf="f['lastName'].invalid && (f['lastName'].dirty || f['lastName'].touched)">Le nom est requis.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row two-columns">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Date de Naissance</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="f['birthDate'].invalid && (f['birthDate'].dirty || f['birthDate'].touched)">La date de naissance est requise.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Lieu de Naissance</mat-label>
+            <input matInput formControlName="birthPlace" placeholder="Douala, Cameroun" required>
+            <mat-icon matSuffix [class.valide]="this.registrationForm.get('birthPlace')?.valid">location_on</mat-icon>
+            <mat-error *ngIf="f['birthPlace'].invalid && (f['birthPlace'].dirty || f['birthPlace'].touched)">Le lieu de naissance est requis.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row two-columns">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Nationalité</mat-label>
+            <mat-select formControlName="nationality" required>
+              <mat-option *ngFor="let nat of nationalities" [value]="nat">{{ nat }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f['nationality'].invalid && (f['nationality'].dirty || f['nationality'].touched)">La nationalité est requise.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Résidence Actuelle</mat-label>
+            <input matInput formControlName="currentResidence" placeholder="Yaoundé, Cameroun" required>
+            <mat-icon matSuffix [class.valide]="this.registrationForm.get('currentResidence')?.valid">home</mat-icon>
+            <mat-error *ngIf="f['currentResidence'].invalid && (f['currentResidence'].dirty || f['currentResidence'].touched)">La résidence actuelle est requise.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row two-columns">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Numéro de Téléphone</mat-label>
+            <input matInput formControlName="phoneNumber" placeholder="+237 6XXXXXXXX" required>
+            <mat-icon matSuffix [class.valide]="this.registrationForm.get('phoneNumber')?.valid">phone</mat-icon>
+            <mat-error *ngIf="f['phoneNumber'].invalid && (f['phoneNumber'].dirty || f['phoneNumber'].touched)">
+              <span *ngIf="f['phoneNumber'].errors?.['required']">Le numéro de téléphone est requis.</span>
+              <span *ngIf="f['phoneNumber'].errors?.['pattern']">Format invalide (ex: +237XXXXXXXXX).</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Profession</mat-label>
+            <input matInput formControlName="profession" placeholder="Développeur Logiciel" required>
+            <mat-icon matSuffix [class.valide]="this.registrationForm.get('profession')?.valid">work</mat-icon>
+            <mat-error *ngIf="f['profession'].invalid && (f['profession'].dirty || f['profession'].touched)">La profession est requise.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-radio-group aria-label="Sélectionner le sexe" formControlName="gender" required>
+            <label>Sexe:</label>
+            <mat-radio-button value="Masculin">Masculin</mat-radio-button>
+            <mat-radio-button value="Féminin">Féminin</mat-radio-button>
+          </mat-radio-group>
+          <mat-error *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)">Le sexe est requis.</mat-error>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Informations Bibliographiques (facultatif)</mat-label>
+          <textarea matInput formControlName="bioInfo" rows="10" placeholder="Parlez un peu de vous..."></textarea>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="registrationForm.invalid">
+          <mat-icon>how_to_reg</mat-icon>
+          Créer mon Compte
+        </button>
+      </form>
+       }
+     
+    </div> 
+    <div class="registration-footer">
+      <p>Vous avez déjà un compte ? <a (click)="log()">Connectez-vous ici</a></p>
+      <!-- <p>&copy; 2024 Votre Entreprise. Tous droits réservés.</p> -->
+    </div>
+       <div class="close" (click)="close()" >
+        <mat-icon style="cursor: pointer;font-size: 1.5rem;font-weight: 600;">  close_small</mat-icon>
+    </div>
+  </div>

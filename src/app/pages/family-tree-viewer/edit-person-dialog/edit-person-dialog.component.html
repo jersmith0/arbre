@@ -1,0 +1,34 @@
+<!-- <h2 mat-dialog-title>Modifier le membre</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form (ngSubmit)="onSave()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nom du membre</mat-label>
+      <input matInput [(ngModel)]="editedLabel" name="editedLabel" required cdkFocusInitial>
+      <mat-error *ngIf="!editedLabel">Le nom est requis.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Forme du nœud</mat-label>
+      <mat-select [(ngModel)]="editedShape" name="editedShape">
+        <mat-option *ngFor="let shape of shapeOptions" [value]="shape.value">
+          {{ shape.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Couleur du nœud</mat-label>
+      <mat-select [(ngModel)]="editedColor" name="editedColor">
+        <mat-option *ngFor="let color of colorOptions" [value]="color.value">
+          {{ color.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-flat-button color="primary" (click)="onSave()" [disabled]="!editedLabel.trim()">Enregistrer</button>
+</mat-dialog-actions> -->

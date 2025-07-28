@@ -1,0 +1,16 @@
+:host {
+      display: block; /* S'assure que le composant se comporte comme un bloc dans la grille */
+      height: 100%;   /* S'assure qu'il remplit la hauteur de sa cellule de grille */
+    }
+    .body-content {
+        position: relative;
+        margin-top: 11.5px;
+        margin-left: 18px;
+        overflow: h; /* Permet le défilement vertical si le contenu dépasse */
+        background-color:salmon; /* Couleur de fond du corps */
+      /* Styles spécifiques pour le contenu interne du corps */
+      padding: 0; // Le padding est géré par app-body dans app.component.scss
+      height: 90%; /* S'assure que la zone de contenu remplit son conteneur */
+      width: 75%;
+      border-radius: 24px;
+    }

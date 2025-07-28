@@ -1,0 +1,201 @@
+/* login-form.component.scss */
+
+// Définissez des variables pour les couleurs. Il est recommandé de les placer dans
+// votre fichier de styles global (ex: src/styles.scss) pour une réutilisation.
+// Si vous les laissez ici, elles ne s'appliqueront qu'à ce composant.
+:root {
+  --primary-color: #6200EE;   // Un violet Material Design
+  --primary-dark: #3700B3;    // Une nuance plus foncée du primaire
+  --accent-color: #03DAC6;    // Une couleur d'accent turquoise
+  --text-dark: #212121;       // Couleur de texte foncé
+  --text-medium: #757575;     // Couleur de texte moyenne
+  --text-light: #BDBDBD;      // Couleur de texte claire
+  --background-color: #f5f5f5; // Arrière-plan clair
+  --card-background: #ffffff;  // Arrière-plan des cartes
+  --error-color: #f44336;     // Rouge erreur
+  --success-color: #4CAF50;   // Vert succès
+}
+
+// Conteneur principal qui centre le formulaire sur la page
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  background-color: green;
+  padding: 20px;
+  box-sizing: border-box; /* S'assure que le padding n'ajoute pas à la largeur totale */
+
+  @media (max-width: 600px) {
+    padding: 10px; // Moins de padding sur petits écrans
+  }
+}
+
+// La carte Material qui contient le formulaire
+.login-form-card {
+    
+  background-color: var(--card-background);
+  padding: 30px 40px;
+  border-radius: 12px; // Coins plus arrondis
+//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); // Ombre plus prononcée pour un effet "flottant"
+  width: 100%;
+  max-width: 450px; // Largeur maximale pour le formulaire
+  text-align: center;
+  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    padding: 20px 25px; // Moins de padding sur petits écrans
+    max-width: 95%; // Prend presque toute la largeur sur mobile
+  }
+}
+
+// En-tête du formulaire (icône, titre, description)
+.login-form-header {
+    margin-left: 2cm;
+  margin-bottom: 30px;
+  .header-icon {
+    font-size: 64px; // Grande icône
+    width: 64px;
+    height: 64px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
+  h2 {
+    font-size: 32px; // Grand titre
+    margin: 0 0 10px 0;
+    color: var(--text-dark);
+    font-weight: 600; // Un peu plus gras
+  }
+  p {
+    font-size: 16px;
+    color: var(--text-medium);
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// Contenu du formulaire (champs et bouton)
+.login-form-content {
+    margin-left: 2cm;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // Espacement uniforme entre les éléments
+
+  .full-width {
+    width: 100%;
+  }
+
+  // Styles pour les MatFormField (bordures, couleurs)
+  mat-form-field {
+    .mat-form-field-wrapper {
+      padding-bottom: 0; // Enlève l'espace par défaut pour les messages d'erreur
+      margin-bottom: 5px; // Ajoute un petit espace au-dessus des messages d'erreur
+    }
+
+    // Personnalisation des couleurs des champs en mode 'outline'
+    &.mat-focused {
+      .mat-form-field-outline-thick {
+        color: var(--primary-color);
+      }
+      .mat-form-field-label {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  // Styles pour le bouton de soumission
+  button[type="submit"] {
+    height: 55px; // Bouton plus grand
+    font-size: 19px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: rgb(123, 123, 248);
+    color: white;
+    font-weight: 400; // Texte du bouton plus gras
+    transition: background-color 0.4s ease; // Transition douce au survol
+
+    &:hover:not(:disabled) {
+      background-color: rgb(62, 62, 202);
+    //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Légère ombre au survol
+    }
+
+    &:disabled {
+      background-color: gray; // Couleur discrète quand désactivé
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
+// Pied de page du formulaire (liens)
+.login-form-footer {
+    margin-left: 2cm;
+  margin-top: 30px;
+  font-size: 15px;
+  color: var(--text-medium);
+
+  a {
+    color: rgb(123, 123, 248);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+
+    &:hover {
+      color: rgb(62, 62, 202);
+      text-decoration :none;
+
+    }
+  }
+
+  p {
+    margin: 8px 0;
+  }
+}
+
+.valide{
+      color: rgb(62, 62, 202);
+}
+
+.close{
+    position: absolute;
+    top: 15px;
+    left: 1cm;
+    background-color: rgb(253, 73, 73);
+    color: white;
+    padding: 0.2rem 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .4s ease-in-out;
+}
+
+.close:hover{
+    background-color: rgb(250, 59, 59);
+    color: white;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/*
+  STYLES POUR LES MESSAGES DE SNACKBAR
+
+  IMPORTANT: Ces styles doivent être placés dans votre fichier de styles global
+  (par exemple, `src/styles.scss`) pour fonctionner correctement, car
+  MatSnackBar rend ses éléments en dehors du contexte de ce composant.
+  Je les inclus ici pour la complétude du code CSS du formulaire,
+  mais gardez cela à l'esprit pour le déploiement.
+*/
+/*
+.snackbar-success {
+  background-color: var(--success-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 500;
+}
+
+.snackbar-error {
+  background-color: var(--error-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 500;
+}
+*/

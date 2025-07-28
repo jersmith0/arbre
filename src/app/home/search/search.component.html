@@ -1,0 +1,53 @@
+<div class="app-main-layout">
+    <div class="main-content-area">
+        <div class="genealogy-search-container">
+            <h1 class="app-title">Mon Arbre <span style="color: #228B22;">Généalogique</span> </h1>
+            <p class="app-subtitle">Explorez et connectez vos racines</p>
+
+            <mat-form-field appearance="outline" class="app-search-bar">
+                <mat-icon matPrefix class="search-icon">search</mat-icon>
+                <input matInput type="text" placeholder="Rechercher par nom, prénom, année de naissance...">
+            </mat-form-field>
+
+            <div class="app-buttons">
+                <button mat-flat-button (click)="log()" >Se connecter</button>
+                <button mat-flat-button (click)="register()">Creer un compte</button>
+            </div>
+
+            <div class="genealogy-pattern" ></div>
+        </div>
+    </div>
+       <!-- ================ right panel==================== -->
+        
+
+    <div class="right-info-panel">
+        <div class="panel-header">
+            <!-- <mat-icon class="panel-icon">info</mat-icon>  -->
+            <h3 style="color: black; text-align: center;">À propos de Mon Arbre Généalogique</h3>
+        </div>
+        
+        <div   class="panel-content" style="background-color: #eaf5ea; padding: 20px; color: #333; font-family: sans-serif;">
+    <p>
+        Mon Arbre Généalogique est une application dédiée à la <strong style="color: #004d00;">création</strong> et à la <strong style="color: #004d00;">visualisation</strong> de votre histoire familiale. Plongez dans vos racines, découvrez vos ancêtres et connectez les générations pour construire un héritage numérique inoubliable.
+    </p>
+    <p>
+        Grâce à une interface intuitive et des outils puissants, vous pouvez <strong style="color: #004d00;">ajouter des membres</strong>, documenter leurs vies avec des photos et des notes, et explorer les liens qui vous unissent. Notre objectif est de rendre la généalogie accessible et passionnante pour tous.
+    </p>
+    <div class="panel-divider"></div>
+    <h4 style="color: #00C000;">Fonctionnalités clés :</h4>
+    <ul>
+        <li>Création et gestion d'individus et de relations.</li>
+        <li>Visualisation interactive de l'arbre.</li>
+        <li>Recherche avancée par nom, date ou lieu.</li>
+        <li>Téléchargement de photos et documents.</li>
+        <li>Contrôle de la confidentialité des données.</li>
+    </ul>
+    <div class="panel-divider"></div>
+    <p>
+        Pour toute question ou suggestion, n'hésitez pas à <a href="#" class="panel-link" style="color: #87CEEB;">nous contacter</a>.
+    </p>
+    <!-- <p class="app-version" style="color: #CCCCCC;">Version : 1.0.0</p>
+    <p class="app-credits" style="color: #CCCCCC;">Développé avec passion par [Votre Nom/Équipe]</p> -->
+</div>
+    </div>
+</div>

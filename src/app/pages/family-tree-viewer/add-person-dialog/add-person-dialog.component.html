@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Ajouter un nouveau membre</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form (ngSubmit)="onAddPerson()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nom du membre</mat-label>
+      <input matInput [(ngModel)]="personLabel" name="personLabel" required cdkFocusInitial>
+      <mat-error *ngIf="!personLabel">Le nom est requis.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Forme du nœud</mat-label>
+      <mat-select [(ngModel)]="personShape" name="personShape">
+        <mat-option *ngFor="let shape of shapeOptions" [value]="shape.value">
+          {{ shape.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Couleur du nœud</mat-label>
+      <mat-select [(ngModel)]="personColor" name="personColor">
+        <mat-option *ngFor="let color of colorOptions" [value]="color.value">
+          {{ color.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-flat-button color="primary" (click)="onAddPerson()" [disabled]="!personLabel.trim()">Ajouter</button>
+</mat-dialog-actions>

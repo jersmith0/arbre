@@ -1,0 +1,38 @@
+<mat-toolbar class="toolbar">
+  <span>Mon arbre genealogique</span> <!-- Nom de l'application -->
+  <span class="example-spacer"></span>
+
+  <!-- Afficher le nom de l'utilisateur ici -->
+  <span class="user-display-name">Bienvenue, {{ userDisplayName }}</span>
+
+ 
+
+  <!-- Menu d'options (existant) -->
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu d'options" >
+    <mat-icon style="color:white;font-weight: 600;"> more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>home</mat-icon>
+      <span>Accueil</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Paramètres</span> 
+
+    </button>
+     <button mat-menu-item (click)="logOut()">
+
+    <mat-icon >logout</mat-icon>
+    <span>Deconnexion</span>
+    </button>
+    <!-- <button mat-menu-item *ngIf="!currentUser" (click)="router.navigate(['/login'])">
+      <mat-icon>login</mat-icon>
+      <span>Connexion</span>
+    </button>
+    <button mat-menu-item *ngIf="!currentUser" (click)="router.navigate(['/register'])">
+      <mat-icon>person_add</mat-icon>
+      <span>Inscription</span>
+    </button> -->
+  </mat-menu>
+</mat-toolbar>

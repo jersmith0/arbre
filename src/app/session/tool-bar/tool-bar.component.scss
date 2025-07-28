@@ -1,0 +1,19 @@
+.toolbar {
+  background-color: #228B22; /* Couleur Material Design Blue */
+  color: white;
+}
+
+.example-spacer {
+  flex: 1 1 auto; /* Pousse les éléments vers les extrémités */
+}
+
+.user-display-name {
+  margin-right: 15px;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+/* Styles pour les boutons mat-icon-button dans la toolbar */
+button.mat-icon-button {
+  color: white; /* S'assure que les icônes sont blanches */
+}
